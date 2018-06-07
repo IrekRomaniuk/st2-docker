@@ -400,10 +400,27 @@ spec:
     port: 443
 
 ---
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: ebs-pv
+  labels:
+    type: amazonEBS
+spec:
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteMany
+  awsElasticBlockStore:fst2
+    volumeID: 
+    fsType: ext4
+---
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
   name: st2-packs
+  labels:
+    type: amazonEBS
 spec:
   accessModes:
   - ReadWriteMany
@@ -416,6 +433,8 @@ kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
   name: st2-virtualenvs
+  labels:
+    type: amazonEBS
 spec:
   accessModes:
   - ReadWriteMany
