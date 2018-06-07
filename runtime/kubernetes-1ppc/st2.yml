@@ -412,7 +412,7 @@ spec:
   accessModes:
     - ReadWriteMany
   awsElasticBlockStore:fst2
-    volumeID: 
+    volumeID: ""
     fsType: ext4
 ---
 kind: PersistentVolumeClaim
